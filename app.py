@@ -207,60 +207,60 @@ Info_mine =  html.Div([
 ######################### Picture
 
 
-Picture_CSIR= html.Div([
-                    dbc.Container(
-                        html.Img(src=encode_image("one"),
-
-                        style={
-
-                            'margin-top': 0,
-                            'margin-right': 10,
-
-
-                        },)
-                                )
-                    ])
-
-Picture_Talbe= html.Div([
-                    html.Div(
-                        html.Img(src=encode_image("Table"),
-
-                        style={
-                            'height': '30%',
-                            'width': '85%',
-                            'float': 'left',
-                            'position': 'relative',
-                            'margin-top': 10,
-                            'margin-right': 0,
-                            'display': 'inline-block',
-                            'padding-top': 20,
-
-                            },
-                         )
-                        )
-                    ])
-
-Picture_GIZ= html.Div([
-                    html.Div(
-                        html.Img(src=encode_image("GIZ Cooperation logo"),
-
-                        style={
-                            # 'height': 150,
-                            # 'width': 500,
-                            # 'height': '5%',
-                            'width': '40%',
-                            'float': 'left',
-                            'position': 'relative',
-                            'margin-top': 10,
-                            'margin-right': 0,
-                            'display': 'inline-block',
-                            'padding-top': 20,
-
-                            },
-                         )
-                        )
-                    ])
-
+# Picture_CSIR= html.Div([
+#                     dbc.Container(
+#                         html.Img(src=encode_image("one"),
+#
+#                         style={
+#
+#                             'margin-top': 0,
+#                             'margin-right': 10,
+#
+#
+#                         },)
+#                                 )
+#                     ])
+#
+# Picture_Talbe= html.Div([
+#                     html.Div(
+#                         html.Img(src=encode_image("Table"),
+#
+#                         style={
+#                             'height': '30%',
+#                             'width': '85%',
+#                             'float': 'left',
+#                             'position': 'relative',
+#                             'margin-top': 10,
+#                             'margin-right': 0,
+#                             'display': 'inline-block',
+#                             'padding-top': 20,
+#
+#                             },
+#                          )
+#                         )
+#                     ])
+#
+# Picture_GIZ= html.Div([
+#                     html.Div(
+#                         html.Img(src=encode_image("GIZ Cooperation logo"),
+#
+#                         style={
+#                             # 'height': 150,
+#                             # 'width': 500,
+#                             # 'height': '5%',
+#                             'width': '40%',
+#                             'float': 'left',
+#                             'position': 'relative',
+#                             'margin-top': 10,
+#                             'margin-right': 0,
+#                             'display': 'inline-block',
+#                             'padding-top': 20,
+#
+#                             },
+#                          )
+#                         )
+#                     ])
+#
 
 
 
@@ -375,13 +375,13 @@ InfoCard = html.Div([
                    # style={"height": "125px",},
                    # align="center",
                     ),
-                dbc.CardFooter(
-                    [html.Div([
-                        html.P(children="", className="card-title", id="cardLat"),
-                        html.P(children="", className="card-text", id="cardLon"),
-                            ],),
-                        ],
-                               ),
+                # dbc.CardFooter(
+                #     [html.Div([
+                #         html.P(children="", className="card-title", id="cardLat"),
+                #         html.P(children="", className="card-text", id="cardLon"),
+                #             ],),
+                #         ],
+                #                ),
             ],
             outline=True,
             color="dark",)
@@ -641,7 +641,7 @@ layout1 = html.Div([
                                 sm=9,
                             ),
                             dbc.Col(
-                                Picture_CSIR,
+                                # Picture_CSIR,
                                 md=3,
                                 sm=3,
                             ),
@@ -740,7 +740,7 @@ layout1 = html.Div([
                     html.Div(
                         dbc.Row([
                             dbc.Col(
-                                Picture_GIZ,
+                                # Picture_GIZ,
                                 md=6,
                                 sm=6,
                             ),
@@ -799,7 +799,8 @@ layout2 = html.Div([
                         ),
                         dbc.Col(
                             html.Div(
-                                Picture_Talbe),
+                                # Picture_Talbe
+                                ),
                             md=7,
                             sm=12,
                         ),
@@ -1005,43 +1006,6 @@ server = app.server
 
 if __name__ == '__main__':
     app.run_server()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
