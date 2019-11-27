@@ -209,7 +209,7 @@ Info_mine =  html.Div([
 
 Picture_CSIR= html.Div([
                     dbc.Container(
-                        html.Img(src=encode_image("one"),
+                        html.Img(src='https://raw.githubusercontent.com/Futile21/heroku3/Brtest/Picture/ONE.png',
 
                         style={
 
@@ -223,7 +223,7 @@ Picture_CSIR= html.Div([
 
 Picture_Talbe= html.Div([
                     html.Div(
-                        html.Img(src=encode_image("Table"),
+                        html.Img(src='https://raw.githubusercontent.com/Futile21/heroku3/Brtest/Picture/Table.PNG',
 
                         style={
                             'height': '30%',
@@ -242,7 +242,7 @@ Picture_Talbe= html.Div([
 
 Picture_GIZ= html.Div([
                     html.Div(
-                        html.Img(src=encode_image("GIZ Cooperation logo"),
+                        html.Img(src='https://raw.githubusercontent.com/Futile21/heroku3/Brtest/Picture/GIZ%20Cooperation%20logo.png',
 
                         style={
                             # 'height': 150,
@@ -570,33 +570,6 @@ RoseColour = ['rgb(18, 0, 57)', 'rgb(77, 0, 153)', 'rgb(102, 0, 204)', 'rgb(128,
 Names=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]
 
 
-############            ############            ############
-
-# WSPD=da.sel(time=slice('2010-10','2010-11'))['WSPD']
-# WDRO=da.sel(time=slice('2010-10','2010-11'))['WDRO']
-# x=rose(1, WSPD, WDRO)
-#
-#
-# ############
-#
-# Rosetraces = []
-# cont = 0
-# for j in reversed(list(x["50"].keys())):
-# #         print(j)
-# #         print(x[i][j])
-#
-# #         print("")
-#     Rosetraces.append(
-#         go.Barpolar(
-#                     r=x["100"][j],
-#                     name=f'Greater {j} m/s',
-#                     marker_color=RoseColour[cont],
-#                     theta=Names,
-#                         ),
-#     )
-#     cont+=1
-#
-# Names=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]
 
 rose = html.Div([
     dcc.Graph(
@@ -798,9 +771,7 @@ layout2 = html.Div([
 
                         ),
                         dbc.Col(
-                            html.Div(
-                                Picture_Talbe
-                                ),
+                            Picture_Talbe,
                             md=7,
                             sm=12,
                         ),
@@ -1005,45 +976,6 @@ server = app.server
 
 if __name__ == '__main__':
     app.run_server()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
