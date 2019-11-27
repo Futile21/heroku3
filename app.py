@@ -343,7 +343,7 @@ Radio = html.Div([
                                         options=[
                                             {'label': 'Capacity Factor', 'value': "Capacity Factor [%]", },
                                             {'label': 'Wind Power', 'value': "Wind Power [MWh/year]", }, ],
-                                        value='Capacity Factor [%]',
+                                            value='Capacity Factor [%]',
                                         inline=True,
 
                                 ),
@@ -515,8 +515,8 @@ Roselayout=go.Layout(
 # da=xr.open_mfdataset(r"C:\AllRun\*10.nc",combine='by_coords')
 # da=xr.open_dataset(r'C:\Users\\futil\OneDrive\GIZ\Internship\seb_test_ring\\rose\maker\AllCoTurb.nc')
 
-WindDF=pd.read_csv('https://raw.githubusercontent.com/Futile21/CSV_wind/master/Test_CF003.csv')
-RoseDF=pd.read_csv('https://raw.githubusercontent.com/Futile21/CSV_wind/master/Test_Rose003.csv')
+WindDF=pd.read_csv('https://raw.githubusercontent.com/Futile21/CSV_wind/master/Test_CF004.csv')
+RoseDF=pd.read_csv('https://raw.githubusercontent.com/Futile21/CSV_wind/master/Test_Rose004.csv')
 TurbDF = pd.read_csv("https://raw.githubusercontent.com/Futile21/CSV_wind/master/PowerTurb4.csv")
 
 xspace = np.linspace(-0.0, 25, 100)
@@ -535,9 +535,9 @@ MapData = [
            mode="markers",
            # hoverinfo=df['loc'].astype(str) + ' inches',
            # text=[i for i in list_of_locations],
-           text=np.array(WindDF['CF-Turbine 1-50']).flatten(),
+           text=np.array(WindDF['Capacity Factor [%]-Turbine 1-50']).flatten(),
            marker=dict(
-               color=np.array(WindDF['CF-Turbine 1-50']).flatten(),           ################ LINK
+               color=np.array(WindDF['Capacity Factor [%]-Turbine 1-50']).flatten(),           ################ LINK
                colorscale=scl,
                reversescale=True,
                opacity=0.35,
@@ -807,6 +807,7 @@ app.layout = html.Div([
 ############################################################################################################################################################  Callback
 
 
+
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
@@ -817,6 +818,70 @@ def display_page(pathname):
     else:
         return '404'
 
+
+
+
+
+
+@app.callback(Output("MapRSA", "figure"),
+                [   Input('btn', 'n_clicks')],
+            [
+                State("RadioPower", "value"),
+                State("RadioTurb", "value"),
+                State("RadioHeight", "value"),
+                State("MapRSA", "relayoutData"),
+             ],)
+def updateMapRSA(n_clicks,PowerType,Turb,Height,Maplayout):
+    DataDisplayed=PowerType+"-"+Turb+"-"+Height
+
+    #print(Maplayout)
+    if Maplayout is not None and "mapbox.center" in Maplayout:
+        lon = float(Maplayout["mapbox.center"]["lon"])
+        lat = float(Maplayout["mapbox.center"]["lat"])
+        zoom = float(Maplayout["mapbox.zoom"])
+        RSAlayout["mapbox"]["center"]["lon"] = lon
+        RSAlayout["mapbox"]["center"]["lat"] = lat
+        RSAlayout["mapbox"]["zoom"] = zoom
+        #RSAlayout["title"] = "hey"
+
+
+
+    data = [
+               go.Scattermapbox(
+                   lat=WindDF['lat'],
+                   lon=WindDF['lon'],
+                   mode="markers",
+                   # hoverinfo=df['loc'].astype(str) + ' inches',
+                   # text=[i for i in list_of_locations],
+                   text=WindDF[DataDisplayed],
+                   marker=dict(
+                       color=WindDF[DataDisplayed],
+                       colorscale=scl,
+#                       colorscale="jet",
+
+                       reversescale=True,
+                       opacity=0.35,
+                       size=8,
+                       colorbar=dict(
+                           title=PowerType,
+                           titlefont=dict(size=18,family="Arial"),
+                           titleside="right",
+                           outlinecolor="rgba(68, 68, 68, 0)",
+                           ticks="outside",
+                           showticksuffix="last",
+                           #dtick=0.1,
+                           tickmode="auto",
+                       ),
+                   ),
+
+    ),
+           ]
+
+
+
+
+    figure = dict(data=data,layout=RSAlayout)
+    return figure
 
 
 ################################ CARD TOP
@@ -843,9 +908,9 @@ def locDATA2(clickData,Turb,Height):
         ID = clickData['points'][0]['pointIndex']
 
     # CF= np.array(da["CF"].sel(ID=ID,Turb=Turb,hgt=int(Height)))
-    CF=np.array(WindDF[(WindDF['ID'] == ID)]['CF-'+Turb+'-'+Height]).flatten()
-
-    return ("CF is "+str(CF[0])+" %")
+    CF=np.array(WindDF[(WindDF['ID'] == ID)]['Capacity Factor [%]-'+Turb+'-'+Height]).flatten()
+    CF_round = str(round(float(CF), 3))
+    return ("CF is "+str(CF_round)+" %")
 
 @app.callback(Output("cardmidM", "children"),
             [Input("MapRSA", "clickData" ),
@@ -858,7 +923,7 @@ def locDATA3(clickData,Turb,Height):
     else:
         ID = clickData['points'][0]['pointIndex']
 
-    POWER=np.array(WindDF[(WindDF['ID'] == ID)]['WindPower-'+Turb+'-'+Height]).flatten()
+    POWER=np.array(WindDF[(WindDF['ID'] == ID)]['Wind Power [MWh/year]-'+Turb+'-'+Height]).flatten()
 
     POWER_round = str(round(float(POWER), 1))
     return ("Power is " + str(POWER_round)+" MWh per year")
@@ -975,7 +1040,7 @@ server = app.server
 
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 
 
 
