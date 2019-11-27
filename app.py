@@ -874,7 +874,7 @@ def locDATA2(clickData,Turb,Height):
     # CF= np.array(da["CF"].sel(ID=ID,Turb=Turb,hgt=int(Height)))
     CF=np.array(WindDF[(WindDF['ID'] == ID)]['CF-'+Turb+'-'+Height]).flatten()
 
-    return ("CF is "+str(CF)+" %")
+    return ("CF is "+str(CF[0])+" %")
 
 @app.callback(Output("cardmidM", "children"),
             [Input("MapRSA", "clickData" ),
@@ -903,7 +903,6 @@ def locDATA4(clickData):
 
     else:
         XLAT = clickData['points'][0]['lat']
-        XLONG = clickData['points'][0]['lon']
 
     lat =str( XLAT)
 
