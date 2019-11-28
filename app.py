@@ -1000,7 +1000,7 @@ def update_figurePower(clickData,DropdownTurb,DropdownHeight):
                 go.Scatter(
                     x=np.array(TurbDF['Speed']),
                     y=np.array(TurbDF[Turbtype]),
-                    name="Turbine Power Curve",
+                    name=Turbtype,
                     yaxis="y2",
                     )
                 )
