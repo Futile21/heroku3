@@ -118,7 +118,7 @@ table_header = [html.Thead(html.Tr([html.Th("Turbine",), html.Th("Max Power Outp
 row1 = html.Tr([html.Td("Turbine 1"),html.Td("2.7 MW"), html.Td("Class 3"), html.Td("Low Wind")])
 row2 = html.Tr([html.Td("Turbine 2"),html.Td("2.78 MW"), html.Td("Class 3"), html.Td("Low Wind")])
 row3 = html.Tr([html.Td("Turbine 3"),html.Td("3 MW"),html.Td("Class 3"), html.Td("Low Wind")])
-row4 = html.Tr([html.Td("Turbine 4"),html.Td("3 Mw"), html.Td("Class 2"), html.Td("medium Wind")])
+row4 = html.Tr([html.Td("Turbine 4"),html.Td("3 Mw"), html.Td("Class 2"), html.Td("Medium Wind")])
 
 table_body = [html.Tbody([row1, row2, row3, row4])]
 
