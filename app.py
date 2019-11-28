@@ -184,12 +184,12 @@ Text_Method =  html.Div([
                                     'turbines, the power output was calculated to estimate the capacity factor and '
                                     'amount of energy that can be produced in a year at the different heights within '
                                     'each 5x5km2 pixel for different turbines'),
-                    html.P(children=''),
-                    html.P(children='We would like to improve the app and include more types of turbines. Please refer '
-                                    'to the block in the top right and select whether you would like to add these and'
-                                    ' more turbines to the app or/and if you would prefer to include your own turbine '
-                                    'information. Should you prefer to include your own turbines please indicate how '
-                                    'this data will be supplied e.g. raw data or an equation.'),
+                    # html.P(children=''),
+                    # html.P(children='We would like to improve the app and include more types of turbines. Please refer '
+                    #                 'to the block in the top right and select whether you would like to add these and'
+                    #                 ' more turbines to the app or/and if you would prefer to include your own turbine '
+                    #                 'information. Should you prefer to include your own turbines please indicate how '
+                    #                 'this data will be supplied e.g. raw data or an equation.'),
 
 
                                 ])
