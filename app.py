@@ -138,9 +138,9 @@ Text_Instructions_one =  html.Div([
                                             "specific turbine over a year at a particular height. The data entered below will "
                                             "be plotted on the map."),
                             html.Ol([
-                                html.Li(children="Select one of the four turbine options (the different turbines with their "
-                                                 "corresponding maximum power outputs are displayed in the table below to the"
-                                                 " left)."),
+                                html.Li(children="Select one of the four turbine options"), # (the different turbines with their "
+                                                 # "corresponding maximum power outputs are displayed in the table below to the"
+                                                 # " left)."),
                                 html.Li(children="Select one of the four required hub heights."),
                                 html.Li(children="Select the type of estimate required, namely capacity factor or wind power."),
                                 html.Li(children="To submit the requirements, click the “Plot” button."),],),
